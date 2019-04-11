@@ -6,15 +6,11 @@ package dao;
 import java.io.*;
 import java.util.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import pizzeria.exception.TechnicalException;
 
 
 public class GestionFichier
 {
-	private static final Logger LOG = LoggerFactory.getLogger(GestionFichier.class);
 
 	public File file;
 	public PrintWriter fileWriter;

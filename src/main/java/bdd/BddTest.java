@@ -39,6 +39,7 @@ public class BddTest
 			String titre2 = rs.getString("nom_PAYS");
 			
 			System.out.println("CODE=" + titre + " NOM=" + titre2);
+			
 		}
 
 		// Etape 6 - Fermeture des ressources

@@ -2,11 +2,16 @@ package dao;
 
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import pizzeria.model.*;
 
 public class PizzaFileDao implements IPizzaDao{
 
 	private ArrayList<Pizza> pizzas;
+	private static final Logger LOG = LoggerFactory.getLogger(Pizzabdd.class);
+
 	
 	public PizzaFileDao() {
 		Pizza p1 = new Pizza(0,"PEP","P�p�roni",12.50,CategoriePizza.VIANDE);
@@ -54,7 +59,7 @@ public class PizzaFileDao implements IPizzaDao{
 				pi=null;
 			}
 		}
-		System.out.println("pizza supprimé !");
+		LOG.info("pizza supprimé !");
 	}
 
 	@Override
@@ -76,8 +81,18 @@ public class PizzaFileDao implements IPizzaDao{
 				break;
 			}
 		}
-		System.out.println("Aucune pizza ne correpond à ce code !");
+		LOG.info("Aucune pizza ne correpond à ce code !");
 		return b;
+	}
+
+	@Override
+	public void initialiserBdd() {
+		
+	}
+
+	@Override
+	public void destroyEmFactory() {
+		
 	}
 	
 

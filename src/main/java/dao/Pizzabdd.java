@@ -47,7 +47,6 @@ public class Pizzabdd implements IPizzaDao {
 		}
 		catch (ClassNotFoundException e)
 		{
-			e.printStackTrace();
 			LOG.error(e.getMessage());
 
 		}
@@ -70,7 +69,8 @@ public class Pizzabdd implements IPizzaDao {
 		}
 		catch (SQLException e)
 		{
-			e.printStackTrace();
+			LOG.error(e.getMessage());
+
 		}
 	}
 
@@ -86,6 +86,8 @@ public class Pizzabdd implements IPizzaDao {
 			st = connexionBDD.prepareStatement("SELECT * FROM pizzas");
 			ResultSet result = st.executeQuery();
 			System.out.println(result.getFetchSize());
+
+			
 
 			while(result.next()) 
 			{		
@@ -270,6 +272,16 @@ public class Pizzabdd implements IPizzaDao {
 
 		closeConnexionBdd ();
 		return retour;
+	}
+
+	@Override
+	public void initialiserBdd() {
+		
+	}
+
+	@Override
+	public void destroyEmFactory() {
+		
 	}
 
 }

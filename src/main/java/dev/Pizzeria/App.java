@@ -1,5 +1,6 @@
 package dev.pizzeria;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import dao.Pizzabdd;
@@ -11,18 +12,16 @@ import org.slf4j.LoggerFactory;
 
 public class App {
 	private static final Logger LOG = LoggerFactory.getLogger(App.class);
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		Pizzabdd pizza = new Pizzabdd();
 		MenuFactory mf = new MenuFactory();
 		Scanner sc = new Scanner(System.in);
 		String n = "0";
-		LOG.warn("L'application vient de démarrer.");
-		LOG.error("error :");
+		LOG.info("L'application vient de démarrer.");
 
 		while (!n.equals("5")) {
 			try {
-				System.out.println(
-						"***PIZZA ADMINISTRATION****\n 1. Lister les pizzas\n 2. Ajouter une nouvelle pizza\n 3. Mettre à jour une pizza\n 4. Supprimer une Pizza\n 5. Sortir");
+				LOG.info("***PIZZA ADMINISTRATION****\n 1. Lister les pizzas\n 2. Ajouter une nouvelle pizza\n 3. Mettre a jour une pizza\n 4. Supprimer une Pizza\n 5. Sortir");
 				n = sc.nextLine();
 				switch (n) {
 
@@ -43,10 +42,12 @@ public class App {
 					break;
 
 				case "5":
-					System.out.println("5. Sortir");
+					LOG.info("5. Sortir");
+
 					break;
 				default:
-					System.out.println("Merci de choisir dans le menu");
+					LOG.info("Merci de choisir dans le menu");
+
 				}
 
 			}
@@ -57,12 +58,10 @@ public class App {
 
 		}
 		catch(SavePizzaException e) {
-			System.out.println(e.getMessage());
 			LOG.error(e.getMessage());
 
 		}
 		catch(StockageException e) {
-			System.out.println(e.getMessage());
 			LOG.error(e.getMessage());
 
 		}

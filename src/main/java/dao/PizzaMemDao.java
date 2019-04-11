@@ -3,13 +3,17 @@ package dao;
 import pizzeria.model.Pizza;
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import pizzeria.exception.SavePizzaException;
 import pizzeria.model.*;
 
 public class PizzaMemDao implements IPizzaDao {
 
 	private ArrayList<Pizza> pizzas = new ArrayList<>();
- 
+	private static final Logger LOG = LoggerFactory.getLogger(Pizzabdd.class);
+
 
 	// 1 Instanciation des pizzas, on créer un tableau avec 100 entr�ees, pour ajouter les pizzas que l'on veut
 
@@ -68,7 +72,8 @@ public class PizzaMemDao implements IPizzaDao {
 				pi=null;
 			}
 		}
-		System.out.println("pizza supprimé !");
+		
+		LOG.info("pizza supprimé !");
 		}
 	
 
@@ -94,6 +99,14 @@ public class PizzaMemDao implements IPizzaDao {
 
 		}
 		return b;
+	}
+	@Override
+	public void initialiserBdd() {
+		
+	}
+	@Override
+	public void destroyEmFactory() {
+		
 	}
 
 }
